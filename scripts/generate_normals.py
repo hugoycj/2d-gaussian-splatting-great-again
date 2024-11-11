@@ -13,8 +13,7 @@ import torchvision.transforms as transforms
 def main(source_path: str) -> None:
     # Load StableNormal model
     normal_predictor = torch.hub.load("hugoycj/StableNormal", "StableNormal", 
-                                      trust_repo=True, yoso_version='yoso-normal-v1-5',
-                                      local_cache_dir='/workspace/code/InverseRendering/StableNormal_git/weights')
+                                      trust_repo=True, yoso_version='yoso-normal-v1-5')
 
     output_normal_dir = os.path.join(source_path, "normals")
     os.makedirs(output_normal_dir, exist_ok=True)
