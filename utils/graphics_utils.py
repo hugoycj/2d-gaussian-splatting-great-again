@@ -13,7 +13,6 @@ import torch
 import math
 import numpy as np
 from typing import NamedTuple
-from gaussianpro import propagate
 
 class BasicPointCloud(NamedTuple):
     points : np.array
@@ -136,6 +135,11 @@ def focal2fov(focal, pixels):
 
 
 def patchmatch_propagation(viewpoint_cam, rendered_depth, rendered_normal, viewpoint_stack, src_idxs, patch_size):
+    try: 
+        from gaussianpro import propagate
+    except:
+        print("Please install gaussianpro to use patchmatch propagation")
+        return
     depth_min = 0.1
     depth_max = 80
     
